@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: ca251cc1-422f-4081-8742-be54f1af7750
+      url: 'https://quartopub.com/sites/rsandrana/median-age'
