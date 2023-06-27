@@ -1,5 +1,5 @@
 ---
-title: "Median Age"
+title: "Median Age in U.S. Counties"
 ---
 
 ```{r}
@@ -7,6 +7,7 @@ title: "Median Age"
 #| warning: false
 library(tidyverse)
 library(tidycensus)
+library(plotly)
 ```
 
 ```{r}
@@ -18,9 +19,14 @@ x <- get_decennial(geography = "county",
                                  med_age_female = "P013003"), 
                    year = 2010, 
                    output = "wide")
-x |>
-  ggplot(aes(x = med_age_male, y = med_age_female)) +
-  geom_point()
-  
+plot <- x |>
+  ggplot(aes(x = med_age_male, y = med_age_female, text = NAME)) +
+  geom_point(alpha = 0.5) +
+  labs(
+    x = "Median Male Age",
+    y = "Median Female Age"
+  )
+
+plot
 ```
 
